@@ -454,7 +454,7 @@ elif page == "⚙️ Data Transformation":
 # ══════════════════════════════════════════════════════════════════════════════
 # PAGE 4 — EDA & Visualizations
 # ══════════════════════════════════════════════════════════════════════════════
-elif page == "📊 EDA & Visualizations":
+elif page == "📊 EDA + Visualizations":
     st.title("Phase 3 — EDA & Visualizations")
 
     if not data_ready:
