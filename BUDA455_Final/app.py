@@ -215,7 +215,7 @@ pages = [
     "🏠 Business Overview",
     "🔗 Data Integration",
     "⚙️ Data Transformation",
-    "📊 EDA & Visualizations",
+    "📊 EDA + Visualizations",
     "💡 Key Findings",
     "🤖 AI Query Assistant",
 ]
