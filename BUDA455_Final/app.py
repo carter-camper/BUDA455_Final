@@ -200,14 +200,15 @@ def run_pipeline(sup_bytes, noaa_bytes, stock_bytes):
 
 
 # ── Sidebar navigation ─────────────────────────────────────────────────────────
-_logo_path = pathlib.Path(__file__).parent / "NOAA_logo.svg"
-if _logo_path.exists():
+try:
     import base64
-    svg_data = base64.b64encode(_logo_path.read_bytes()).decode("utf-8")
+    _logo = (pathlib.Path(__file__).parent / "NOAA_logo.svg").read_bytes()
     st.sidebar.markdown(
-        f"<div style='display:flex; justify-content:center;'><img src='data:image/svg+xml;base64,{svg_data}' width='175'></div>",
+        f"<div style='display:flex;justify-content:center'><img src='data:image/svg+xml;base64,{base64.b64encode(_logo).decode()}' width='175'></div>",
         unsafe_allow_html=True,
     )
+except Exception:
+    pass
 st.sidebar.title("BUDA 455 Final Project")
 st.sidebar.markdown("**AI-Powered BI for Data-Driven Decision Making**")
 st.sidebar.divider()
