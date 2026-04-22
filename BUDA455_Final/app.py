@@ -224,7 +224,7 @@ pages = [
 page = st.sidebar.radio("Navigate", pages)
 
 # ── Load CSVs from DATA folder ────────────────────────────────────────────────
-_DATA_DIR = pathlib.Path(__file__).parent.parent / "DATA"
+_DATA_DIR = pathlib.Path(__file__).resolve().parent.parent / "DATA"
 
 @st.cache_data(show_spinner="Running data pipeline…")
 def load_from_disk(sup_path, noaa_path, stock_path):
