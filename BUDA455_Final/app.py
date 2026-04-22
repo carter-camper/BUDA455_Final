@@ -3,7 +3,6 @@ import pandas as pd
 import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
-import base64
 from plotly.subplots import make_subplots
 
 st.set_page_config(
@@ -200,13 +199,14 @@ def run_pipeline(sup_bytes, noaa_bytes, stock_bytes):
 
 
 # ── Sidebar navigation ─────────────────────────────────────────────────────────
-with open("NOAA_logo.svg", "rb") as f:
-    svg_data = base64.b64encode(f.read()).decode("utf-8")
-
-st.sidebar.markdown(
-    f"<div style='display:flex; justify-content:center;'><img src='data:image/svg+xml;base64,{svg_data}' width='175'></div>",
-    unsafe_allow_html=True
-)
+_logo_path = pathlib.Path(__file__).parent / "NOAA_logo.svg"
+if _logo_path.exists():
+    import base64
+    svg_data = base64.b64encode(_logo_path.read_bytes()).decode("utf-8")
+    st.sidebar.markdown(
+        f"<div style='display:flex; justify-content:center;'><img src='data:image/svg+xml;base64,{svg_data}' width='175'></div>",
+        unsafe_allow_html=True,
+    )
 st.sidebar.title("BUDA 455 Final Project")
 st.sidebar.markdown("**AI-Powered BI for Data-Driven Decision Making**")
 st.sidebar.divider()
@@ -224,7 +224,7 @@ page = st.sidebar.radio("Navigate", pages)
 import pathlib
 
 # ── Load CSVs from DATA folder ────────────────────────────────────────────────
-_DATA_DIR = pathlib.Path("/Users/cartercampbell/Desktop/BUDA455/final_project/DATA")
+_DATA_DIR = pathlib.Path(__file__).parent.parent / "DATA"
 
 @st.cache_data(show_spinner="Running data pipeline…")
 def load_from_disk(sup_path, noaa_path, stock_path):
