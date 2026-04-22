@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import pathlib
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
@@ -220,8 +221,6 @@ pages = [
     "🤖 AI Query Assistant",
 ]
 page = st.sidebar.radio("Navigate", pages)
-
-import pathlib
 
 # ── Load CSVs from DATA folder ────────────────────────────────────────────────
 _DATA_DIR = pathlib.Path(__file__).parent.parent / "DATA"
