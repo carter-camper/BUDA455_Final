@@ -219,7 +219,7 @@ pages = [
     "Data Transformation",
     "EDA + Visualizations",
     "Key Findings",
-    "AI Query Assistant",
+    "*AI Query Assistant",
 ]
 page = st.sidebar.radio("Navigate", pages)
 
