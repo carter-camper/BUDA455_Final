@@ -880,7 +880,10 @@ elif page == "AI Query Assistant":
                 sample = ", ".join(str(u) for u in uniq)
                 schema_lines.append(f"  {col} ({dtype}): e.g. {sample}")
             else:
-                schema_lines.append(f"  {col} ({dtype}): min={df[col].min():.2f}, max={df[col].max():.2f}")
+                try:
+                    schema_lines.append(f"  {col} ({dtype}): min={float(df[col].min()):.2f}, max={float(df[col].max()):.2f}")
+                except (TypeError, ValueError):
+                    schema_lines.append(f"  {col} ({dtype}): min={df[col].min()}, max={df[col].max()}")
         schema_str = "\n".join(schema_lines)
 
         system_prompt = f"""You are a data analyst assistant. The user has a pandas DataFrame called `df` with {len(df):,} rows.
