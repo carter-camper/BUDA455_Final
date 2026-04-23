@@ -248,7 +248,7 @@ st.sidebar.caption(f"✅ {len(df):,} rows loaded")
 # PAGE 1 — Business Overview
 # ══════════════════════════════════════════════════════════════════════════════
 if page == "Business Overview":
-    st.title("AI-Powered Business Intelligence")
+    st.title("AI-Powered BI for Health Supplement Sales")
     st.subheader("How weather & e-commerce market signals influence supplement sales (2020–2025)")
 
     col1, col2 = st.columns([3, 2])
