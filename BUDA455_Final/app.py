@@ -828,13 +828,15 @@ elif page == "AI Query Assistant":
     st.title("AI Query Assistant")
     st.markdown("Ask any question about the supplement sales data in plain English. The AI will generate and run the analysis for you.")
 
-    # ── API key input ──────────────────────────────────────────────────────────
-    groq_key = st.text_input(
-        "Groq API Key",
-        type="password",
-        placeholder="gsk_...",
-        help="Free at console.groq.com — takes 30 seconds to sign up",
-    )
+    # ── API key — prefer injected secret, fall back to manual entry ───────────
+    groq_key = st.secrets.get("GROQ_API_KEY", "") if hasattr(st, "secrets") else ""
+    if not groq_key:
+        groq_key = st.text_input(
+            "Groq API Key",
+            type="password",
+            placeholder="gsk_...",
+            help="Free at console.groq.com — takes 30 seconds to sign up",
+        )
 
     st.divider()
 
@@ -868,7 +870,7 @@ elif page == "AI Query Assistant":
     run_btn = st.button("Run Query", type="primary", disabled=not groq_key)
 
     if not groq_key:
-        st.info("Enter your Groq API key above to enable the AI assistant.")
+        st.info("Enter a Groq API key above to enable the AI assistant.")
 
     if run_btn and groq_key and query:
         # Build schema context for the LLM
