@@ -16,38 +16,38 @@ st.set_page_config(
 st.markdown("""
 <style>
     .metric-card {
-        background: #f8f9fa;
-        border-left: 4px solid #4C72B0;
+        background: #c4cede;
+        border-left: 4px solid #4a6fa5;
         padding: 12px 16px;
         border-radius: 6px;
         margin-bottom: 8px;
-        color: #1a1a2e;
+        color: #1e2640;
     }
     .metric-card span {
-        color: #1a1a2e !important;
+        color: #1e2640 !important;
         font-size: 1.1rem;
     }
     .section-header {
         font-size: 1.1rem;
         font-weight: 700;
-        color: #1a1a2e;
-        border-bottom: 2px solid #4C72B0;
+        color: #1e2640;
+        border-bottom: 2px solid #4a6fa5;
         padding-bottom: 4px;
         margin-top: 16px;
         margin-bottom: 12px;
     }
     .finding-box {
-        background: #e8f4f8;
+        background: #bcc8db;
         border-radius: 8px;
         padding: 14px 18px;
         margin-bottom: 10px;
-        color: #1a1a2e;
+        color: #1e2640;
     }
     .finding-box b {
-        color: #1a1a2e;
+        color: #1e2640;
     }
     .finding-box small {
-        color: #333 !important;
+        color: #3a4a6b !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -214,12 +214,12 @@ st.sidebar.markdown("**AI-Powered BI for Data-Driven Decision Making**")
 st.sidebar.divider()
 
 pages = [
-    "🏠 Business Overview",
-    "🔗 Data Integration",
-    "⚙️ Data Transformation",
-    "📊 EDA + Visualizations",
-    "💡 Key Findings",
-    "🤖 AI Query Assistant",
+    "Business Overview",
+    "Data Integration",
+    "Data Transformation",
+    "EDA + Visualizations",
+    "Key Findings",
+    "AI Query Assistant",
 ]
 page = st.sidebar.radio("Navigate", pages)
 
@@ -247,8 +247,8 @@ st.sidebar.caption(f"✅ {len(df):,} rows loaded")
 # ══════════════════════════════════════════════════════════════════════════════
 # PAGE 1 — Business Overview
 # ══════════════════════════════════════════════════════════════════════════════
-if page == "🏠 Business Overview":
-    st.title("AI-Powered Business Intelligence")
+if page == "Business Overview":
+    st.title("AI-Powered BI for Health Supplement Sales")
     st.subheader("How weather & e-commerce market signals influence supplement sales (2020–2025)")
 
     col1, col2 = st.columns([3, 2])
@@ -285,7 +285,7 @@ if page == "🏠 Business Overview":
             "Missing Values": "0",
         }
         for k, v in specs.items():
-            st.markdown(f"""<div class="metric-card"><b style="color:#1a1a2e">{k}</b><br/><span style="font-size:1.1rem;color:#1a1a2e;font-weight:600">{v}</span></div>""",
+            st.markdown(f"""<div class="metric-card"><b style="color:#1e2640">{k}</b><br/><span style="font-size:1.1rem;color:#1e2640;font-weight:600">{v}</span></div>""",
                         unsafe_allow_html=True)
 
     if not data_ready:
@@ -295,7 +295,7 @@ if page == "🏠 Business Overview":
 # ══════════════════════════════════════════════════════════════════════════════
 # PAGE 2 — Data Integration
 # ══════════════════════════════════════════════════════════════════════════════
-elif page == "🔗 Data Integration":
+elif page == "Data Integration":
     st.title("Phase 1 — Data Integration")
 
     st.markdown("""
@@ -344,17 +344,6 @@ elif page == "🔗 Data Integration":
         st.dataframe(merged.head(20), use_container_width=True)
 
         st.divider()
-        st.markdown("### BUDA 455 Requirement Checklist")
-        checks = {
-            f"Observations: {len(merged):,}": len(merged) >= 1000,
-            f"Variables: {len(merged.columns)}": len(merged.columns) >= 10,
-            f"Null values: {merged.isnull().sum().sum()}": merged.isnull().sum().sum() == 0,
-            "Time-indexed (week_start)": True,
-            "3 independent data sources": True,
-        }
-        for label, passed in checks.items():
-            icon = "✅" if passed else "❌"
-            st.markdown(f"{icon} {label}")
     else:
         st.info("👈 Upload the CSV files to see the integrated dataset.")
 
@@ -362,7 +351,7 @@ elif page == "🔗 Data Integration":
 # ══════════════════════════════════════════════════════════════════════════════
 # PAGE 3 — Data Transformation
 # ══════════════════════════════════════════════════════════════════════════════
-elif page == "⚙️ Data Transformation":
+elif page == "Data Transformation":
     st.title("Phase 2 — Data Transformation")
 
     techniques = {
@@ -454,7 +443,7 @@ elif page == "⚙️ Data Transformation":
 # ══════════════════════════════════════════════════════════════════════════════
 # PAGE 4 — EDA & Visualizations
 # ══════════════════════════════════════════════════════════════════════════════
-elif page == "📊 EDA + Visualizations":
+elif page == "EDA + Visualizations":
     st.title("Phase 3 — EDA & Visualizations")
 
     if not data_ready:
@@ -739,7 +728,7 @@ elif page == "📊 EDA + Visualizations":
 # ══════════════════════════════════════════════════════════════════════════════
 # PAGE 5 — Key Findings
 # ══════════════════════════════════════════════════════════════════════════════
-elif page == "💡 Key Findings":
+elif page == "Key Findings":
     st.title("Key Findings & Business Insights")
 
     if data_ready:
@@ -775,7 +764,7 @@ elif page == "💡 Key Findings":
         ]
         for label, value, note in findings:
             st.markdown(f"""<div class="finding-box">
-                <b style="color:#1a1a2e">{label}:</b> <span style="font-size:1.1rem;color:#1a1a2e;font-weight:600">{value}</span><br/>
+                <b style="color:#1e2640">{label}:</b> <span style="font-size:1.1rem;color:#1e2640;font-weight:600">{value}</span><br/>
                 <small style="color:#333">{note}</small>
             </div>""", unsafe_allow_html=True)
 
@@ -790,7 +779,7 @@ elif page == "💡 Key Findings":
         ]
         for label, value, note in weather_findings:
             st.markdown(f"""<div class="finding-box">
-                <b style="color:#1a1a2e">{label}:</b> <span style="font-size:1.1rem;color:#1a1a2e;font-weight:600">{value}</span><br/>
+                <b style="color:#1e2640">{label}:</b> <span style="font-size:1.1rem;color:#1e2640;font-weight:600">{value}</span><br/>
                 <small style="color:#333">{note}</small>
             </div>""", unsafe_allow_html=True)
 
@@ -835,17 +824,19 @@ elif page == "💡 Key Findings":
 # ══════════════════════════════════════════════════════════════════════════════
 # PAGE 6 — AI Query Assistant
 # ══════════════════════════════════════════════════════════════════════════════
-elif page == "🤖 AI Query Assistant":
+elif page == "AI Query Assistant":
     st.title("AI Query Assistant")
     st.markdown("Ask any question about the supplement sales data in plain English. The AI will generate and run the analysis for you.")
 
-    # ── API key input ──────────────────────────────────────────────────────────
-    groq_key = st.text_input(
-        "Groq API Key",
-        type="password",
-        placeholder="gsk_...",
-        help="Free at console.groq.com — takes 30 seconds to sign up",
-    )
+    # ── API key — prefer injected secret, fall back to manual entry ───────────
+    groq_key = st.secrets.get("GROQ_API_KEY", "") if hasattr(st, "secrets") else ""
+    if not groq_key:
+        groq_key = st.text_input(
+            "Groq API Key",
+            type="password",
+            placeholder="gsk_...",
+            help="Free at console.groq.com — takes 30 seconds to sign up",
+        )
 
     st.divider()
 
@@ -879,7 +870,7 @@ elif page == "🤖 AI Query Assistant":
     run_btn = st.button("Run Query", type="primary", disabled=not groq_key)
 
     if not groq_key:
-        st.info("Enter your Groq API key above to enable the AI assistant.")
+        st.info("Enter a Groq API key above to enable the AI assistant.")
 
     if run_btn and groq_key and query:
         # Build schema context for the LLM
@@ -891,7 +882,10 @@ elif page == "🤖 AI Query Assistant":
                 sample = ", ".join(str(u) for u in uniq)
                 schema_lines.append(f"  {col} ({dtype}): e.g. {sample}")
             else:
-                schema_lines.append(f"  {col} ({dtype}): min={df[col].min():.2f}, max={df[col].max():.2f}")
+                try:
+                    schema_lines.append(f"  {col} ({dtype}): min={float(df[col].min()):.2f}, max={float(df[col].max()):.2f}")
+                except (TypeError, ValueError):
+                    schema_lines.append(f"  {col} ({dtype}): min={df[col].min()}, max={df[col].max()}")
         schema_str = "\n".join(schema_lines)
 
         system_prompt = f"""You are a data analyst assistant. The user has a pandas DataFrame called `df` with {len(df):,} rows.
